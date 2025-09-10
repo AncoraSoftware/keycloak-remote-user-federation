@@ -1,0 +1,80 @@
+[
+  {
+    "id": "bdbae799-43b9-4fbd-a904-07bd1de42d00",
+    "firstName": "Cloud",
+    "lastName": "ProcessingUser",
+    "userName": "cloudprocessinguser",
+    "email": "cloudprocessinguser@ancoradocs.com",
+    "emailVerified": true,
+    "enabled": true,
+    "attributes": null,
+    "createdAt": "0001-01-01T00:00:00+00:00",
+    "roles": [
+      "Input",
+      "Ocr",
+      "Capture",
+      "Verify",
+      "Export",
+      "Report"
+    ]
+  },
+  {
+    "id": "c17d95db-c295-4ce3-bbed-0950a91fd39c",
+    "firstName": "",
+    "lastName": "",
+    "userName": "GeneralUser",
+    "email": "",
+    "emailVerified": true,
+    "enabled": true,
+    "attributes": null,
+    "createdAt": "0001-01-01T00:00:00+00:00",
+    "roles": [
+      "Input",
+      "Ocr",
+      "Capture",
+      "Verify",
+      "Export",
+      "Report"
+    ]
+  },
+  {
+    "id": "65b48bbf-a7f4-4a5c-a415-bd330b86a8c8",
+    "firstName": "therefore",
+    "lastName": "connector",
+    "userName": "connector",
+    "email": "connector@ancoradocs.com",
+    "emailVerified": true,
+    "enabled": true,
+    "attributes": null,
+    "createdAt": "0001-01-01T00:00:00+00:00",
+    "roles": [
+      "Input",
+      "Ocr",
+      "Capture",
+      "Verify",
+      "Export",
+      "Report",
+      "Admin"
+    ]
+  },
+  {
+    "id": "e88701cd-b3d3-436c-80cf-dedf502d9372",
+    "firstName": "",
+    "lastName": "",
+    "userName": "Admin",
+    "email": "",
+    "emailVerified": true,
+    "enabled": true,
+    "attributes": null,
+    "createdAt": "0001-01-01T00:00:00+00:00",
+    "roles": [
+      "Input",
+      "Ocr",
+      "Capture",
+      "Verify",
+      "Export",
+      "Report",
+      "Admin"
+    ]
+  }
+]
