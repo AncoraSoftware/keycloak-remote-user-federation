@@ -20,13 +20,11 @@ class RemoteUserAdapter extends AbstractUserAdapterFederatedStorage {
     private final ComponentModel model;
     private final RemoteUserEntity user;
     private final String keycloakId;
-    private final String username;
 
     RemoteUserAdapter(ComponentModel model, KeycloakSession session, RealmModel realm, ComponentModel storageProviderModel, RemoteUserEntity user) {
         super(session, realm, storageProviderModel);
         this.user = user;
         this.keycloakId = StorageId.keycloakId(storageProviderModel, user.getId());
-        this.username = user.getUserName();
         this.model = model;
     }
 
@@ -43,7 +41,7 @@ class RemoteUserAdapter extends AbstractUserAdapterFederatedStorage {
 
     @Override
     public String getUsername() {
-        return username;
+        return this.user.getUserName();
     }
 
     @Override
