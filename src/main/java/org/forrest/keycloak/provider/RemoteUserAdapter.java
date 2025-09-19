@@ -14,6 +14,7 @@ import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 
 import static org.forrest.keycloak.bind.RemoteUserStorageProviderConstants.ADD_ROLES_TO_TOKEN;
 import static org.forrest.keycloak.bind.RemoteUserStorageProviderConstants.DEBUG_ENABLED;
+import static org.forrest.keycloak.bind.RemoteUserStorageProviderConstants.RESOURCE_CLIENT_ID;
 
 class RemoteUserAdapter extends AbstractUserAdapterFederatedStorage {
     private static final Logger logger = Logger.getLogger(RemoteUserFederationProvider.class);
@@ -102,14 +103,54 @@ class RemoteUserAdapter extends AbstractUserAdapterFederatedStorage {
             return roleMappings;
         }
 
+        // Get an existing client to scope the roles to
+        ClientModel resourceClient = getResourceClient();
+        if (resourceClient == null) {
+            log("No resource client available, adding roles as realm roles");
+            return addRealmRoles(roleMappings);
+        }
+
+        // Add roles as client-scoped roles
+        for (String role : user.getRoles()) {
+            RoleModel roleModel = resourceClient.getRole(role);
+            if (roleModel == null) {
+                roleModel = resourceClient.addRole(role);
+                log("Adding client role %s to client %s", role, resourceClient.getClientId());
+            }
+            roleMappings = Stream.concat(roleMappings, Stream.of(roleModel));
+        }
+        return roleMappings;
+    }
+
+    /**
+     * Get an existing client to scope the user roles to.
+     * Returns null if the client doesn't exist - will not create clients automatically.
+     */
+    private ClientModel getResourceClient() {
+        // Check if a specific client ID is configured for role scoping
+        String clientId = model.get(RESOURCE_CLIENT_ID);
+        if (clientId == null || clientId.trim().isEmpty()) {
+            log("No resource client ID configured, roles will be added as realm roles");
+            return null;
+        }
+
+        ClientModel client = realm.getClientByClientId(clientId);
+        if (client == null) {
+            log("Resource client '%s' not found, roles will be added as realm roles", clientId);
+        }
+        return client;
+    }
+
+    /**
+     * Fallback method to add roles as realm roles (original behavior)
+     */
+    private Stream<RoleModel> addRealmRoles(Stream<RoleModel> roleMappings) {
         for (String role : user.getRoles()) {
             RoleModel roleModel = realm.getRole(role);
             if (roleModel == null) {
                 roleModel = realm.addRole(role);
-                log("Adding role %s", role);
+                log("Adding realm role %s", role);
             }
-            //log.infof("Granting role %s to user %s during user import from Remote", role, username);
-            //this.grantRole(roleModel);
             roleMappings = Stream.concat(roleMappings, Stream.of(roleModel));
         }
         return roleMappings;
