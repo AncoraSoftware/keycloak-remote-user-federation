@@ -7,7 +7,10 @@
     "email": "cloudprocessinguser@ancoradocs.com",
     "emailVerified": true,
     "enabled": true,
-    "attributes": null,
+    "attributes": {
+      "Host": "envoy.salmonground-0295243c.southcentralus.azurecontainerapps.io,auth.internal.salmonground-0295243c.southcentralus.azurecontainerapps.io",
+      "cid": "epicor/ancora"
+    },
     "createdAt": "0001-01-01T00:00:00+00:00",
     "roles": [
       "Input",
@@ -26,7 +29,10 @@
     "email": "",
     "emailVerified": true,
     "enabled": true,
-    "attributes": null,
+    "attributes": {
+      "Host": "envoy.salmonground-0295243c.southcentralus.azurecontainerapps.io,auth.internal.salmonground-0295243c.southcentralus.azurecontainerapps.io",
+      "cid": "epicor/ancora"
+    },
     "createdAt": "0001-01-01T00:00:00+00:00",
     "roles": [
       "Input",
@@ -45,7 +51,10 @@
     "email": "connector@ancoradocs.com",
     "emailVerified": true,
     "enabled": true,
-    "attributes": null,
+    "attributes": {
+      "Host": "envoy.salmonground-0295243c.southcentralus.azurecontainerapps.io,auth.internal.salmonground-0295243c.southcentralus.azurecontainerapps.io",
+      "cid": "epicor/ancora"
+    },
     "createdAt": "0001-01-01T00:00:00+00:00",
     "roles": [
       "Input",
@@ -65,7 +74,10 @@
     "email": "",
     "emailVerified": true,
     "enabled": true,
-    "attributes": null,
+    "attributes": {
+      "Host": "envoy.salmonground-0295243c.southcentralus.azurecontainerapps.io,auth.internal.salmonground-0295243c.southcentralus.azurecontainerapps.io",
+      "cid": "epicor/ancora"
+    },
     "createdAt": "0001-01-01T00:00:00+00:00",
     "roles": [
       "Input",
