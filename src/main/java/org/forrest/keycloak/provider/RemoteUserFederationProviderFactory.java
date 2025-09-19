@@ -40,7 +40,7 @@ public class RemoteUserFederationProviderFactory implements UserStorageProviderF
                 .name(FIND_USER_ENDPOINT)
                 .label("Define endpoint for find user")
                 .type(ProviderConfigProperty.STRING_TYPE)
-                .defaultValue("/user")
+                .defaultValue("/find")
                 .add()
             .property()
                 .name(VERIFY_USER_ENDPOINT)
