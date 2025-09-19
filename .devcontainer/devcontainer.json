@@ -4,8 +4,8 @@
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
   "mounts": [
-    "type=bind,source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,readonly",
-    "type=bind,source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly",
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig",
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,readonly",
     "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
   ],
   "features": {
