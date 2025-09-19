@@ -6,7 +6,7 @@
 
     <groupId>com.ancorasoftware.keycloak</groupId>
     <artifactId>remote-user-federation</artifactId>
-    <version>1.0.1-alpha</version>
+    <version>1.0.2-alpha</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
