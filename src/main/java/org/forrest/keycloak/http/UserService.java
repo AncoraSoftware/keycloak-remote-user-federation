@@ -60,7 +60,7 @@ public class UserService {
             if (response.body() == null) {
                 return null;
             }
-            return objectMapper.readValue(response.body().string(), new TypeReference<List<RemoteUserEntity>>() {
+            return objectMapper.readValue(response.body().charStream(), new TypeReference<List<RemoteUserEntity>>() {
             });
         }
     }
@@ -70,7 +70,7 @@ public class UserService {
             if (response.body() == null) {
                 return null;
             }
-            return objectMapper.readValue(response.body().string(), RemoteUserEntity.class);
+            return objectMapper.readValue(response.body().charStream(), RemoteUserEntity.class);
         } catch (Exception e) {
             return null;
         }
@@ -105,7 +105,7 @@ public class UserService {
             if (response.body() == null) {
                 return new UserCountResponse(0);
             }
-            return objectMapper.readValue(response.body().string(), UserCountResponse.class);
+            return objectMapper.readValue(response.body().charStream(), UserCountResponse.class);
         } catch (Exception e) {
             return new UserCountResponse(0);
         }
@@ -121,8 +121,8 @@ public class UserService {
         if (response.body() == null) {
             return new VerifyPasswordResponse(false);
         }
-        
-        return objectMapper.readValue(response.body().string(), VerifyPasswordResponse.class);
+
+        return objectMapper.readValue(response.body().charStream(), VerifyPasswordResponse.class);
     }
 
     private Response doQuery(String url, Map<String, String> params) throws IOException {
