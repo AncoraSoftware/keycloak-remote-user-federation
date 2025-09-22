@@ -4,6 +4,7 @@ import org.forrest.keycloak.http.UserService;
 import org.keycloak.Config;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.component.ComponentValidationException;
+import org.keycloak.models.ClientModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 import org.keycloak.models.RealmModel;
@@ -157,6 +158,16 @@ public class RemoteUserFederationProviderFactory implements UserStorageProviderF
             valid = false;
             comment = "Please check the url.";
         }
+
+        final String clientId = config.get(RESOURCE_CLIENT_ID);
+        if (clientId != null && !clientId.trim().isEmpty()) {
+            ClientModel client = realm.getClientByClientId(clientId);
+            if (client == null) {
+                valid = false;
+                comment += (comment.isEmpty() ? "" : " ") + "Client ID '" + clientId + "' does not exist in this realm.";
+            }
+        }
+
         if (!valid) {
             throw new ComponentValidationException("Unable to validate configuration. Err: " + comment);
         }
